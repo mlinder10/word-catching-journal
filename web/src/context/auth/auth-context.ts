@@ -1,4 +1,4 @@
-import type { APIError, Response } from "@/api";
+import type { Response } from "@/api";
 import type { User } from "@/types";
 import { createContext } from "react";
 
@@ -6,7 +6,7 @@ export type AuthContextType = {
   isAuthenticated: boolean;
   isLoading: boolean;
   user: User | null;
-  login: (email: string, password: string) => Promise<APIError | undefined>;
+  login: (email: string, password: string) => Promise<string | undefined>;
   register: (
     email: string,
     username: string,
@@ -14,7 +14,7 @@ export type AuthContextType = {
     password: string,
   ) => Promise<Response<{ id: string }>>;
   logout: () => Promise<void>;
-  validateToken: () => Promise<APIError | undefined>;
+  validateToken: () => Promise<string | undefined>;
 };
 
 export const AuthContext = createContext<AuthContextType>({

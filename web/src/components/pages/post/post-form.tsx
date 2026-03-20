@@ -35,7 +35,7 @@ export default function PostForm({ definition }: PostFormProps) {
 
   return (
     <div className="flex-1 place-items-center grid">
-      <Card className="max-w-lg">
+      <Card className="min-w-md max-w-lg">
         <CardContent className="space-y-4">
           <div className="flex gap-4">
             <ProfilePicture

@@ -9,7 +9,7 @@ export const router = createRouter({
       isAuthenticated: false,
       isLoading: false,
       login: async () => undefined,
-      register: async () => undefined,
+      register: async () => ({ success: false, error: "" }) as const,
       logout: async () => undefined,
       validateToken: async () => undefined,
     },

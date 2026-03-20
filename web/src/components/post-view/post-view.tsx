@@ -27,7 +27,7 @@ type PostViewProps = {
 export function PostView({ post }: PostViewProps) {
   return (
     <Dialog>
-      <Card>
+      <Card className="flex flex-col h-full">
         <CardHeader>
           <Link
             to="/app/profile/$profileId"
@@ -53,7 +53,7 @@ export function PostView({ post }: PostViewProps) {
             </DialogTrigger>
           </CardAction>
         </CardHeader>
-        <CardContent>
+        <CardContent className="flex-1">
           <DefinitionView definition={post} full={false} />
         </CardContent>
         <CardFooter className="flex py-2">
