@@ -1,0 +1,20 @@
+/// <reference types="vitest/config" />
+import { defineConfig } from "vite";
+import react from "@vitejs/plugin-react";
+import tailwindcss from "@tailwindcss/vite";
+import path from "path";
+import { tanstackRouter } from "@tanstack/router-plugin/vite";
+
+export default defineConfig({
+  plugins: [tanstackRouter(), react(), tailwindcss()],
+  resolve: {
+    alias: {
+      "@": path.resolve(__dirname, "./src"),
+    },
+  },
+  // test: {
+  //   environment: "jsdom",
+  //   globals: true,
+  //   setupFiles: "./src/__tests__/setup.ts",
+  // },
+});

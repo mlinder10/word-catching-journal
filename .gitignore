@@ -1,0 +1,19 @@
+# web
+node_modules
+package-lock.json
+
+# server
+.env*
+.rest
+
+db.sqlite*
+errors.log
+
+go.sum
+
+main
+Makefile
+
+# shared
+todo.txt
+

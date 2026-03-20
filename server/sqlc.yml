@@ -1,0 +1,19 @@
+version: "2"
+sql:
+  - engine: "sqlite"
+    queries: "db/queries"
+    schema: "db/schema.sql"
+    gen:
+      go:
+        package: "repo"
+        out: "db/repo"
+        sql_package: "database/sql"
+        emit_pointers_for_null_types: true
+        emit_json_tags: true
+        json_tags_case_style: "camel"
+        overrides:
+          - db_type: "datetime"
+            go_type: "time.Time"
+          - db_type: "datetime"
+            nullable: true
+            go_type: "*time.Time"
