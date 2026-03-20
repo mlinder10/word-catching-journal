@@ -41,7 +41,7 @@ function ResetPasswordCodePage() {
   }
 
   return (
-    <main className="place-items-center grid h-screen">
+    <main className="flex-1 place-items-center grid">
       <Card className="min-w-md">
         <CardHeader>
           <CardTitle>Reset Password</CardTitle>

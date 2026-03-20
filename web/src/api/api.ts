@@ -16,6 +16,7 @@ import type {
   DefineResponse,
 } from "./responses";
 import axios, { type AxiosInstance } from "axios";
+import { parseNetworkError } from "@/lib/api";
 
 // errors aren't handle here because they're caught by useQuery and useMutation
 export default class API {
@@ -43,10 +44,9 @@ export default class API {
       const res = await this.client.get<User>("/refresh");
       return { success: true, ...res.data };
     } catch (error) {
-      console.error(error);
       return {
         success: false,
-        error: "internal server error",
+        error: parseNetworkError(error),
       };
     }
   }
@@ -56,10 +56,9 @@ export default class API {
       const res = await this.client.post<User>("/login", data);
       return { success: true, ...res.data };
     } catch (error) {
-      console.error(error);
       return {
         success: false,
-        error: "internal server error",
+        error: parseNetworkError(error),
       };
     }
   }
@@ -68,19 +67,23 @@ export default class API {
     try {
       const res = await this.client.post<string>("/register", data);
       return { success: true, id: res.data };
-    } catch {
+    } catch (error) {
       return {
         success: false,
-        error: "internal server error",
+        error: parseNetworkError(error),
       };
     }
   }
 
-  async logout(): Promise<void> {
+  async logout(): Promise<Response<object>> {
     try {
       await this.client.post("/logout");
-    } catch (err) {
-      console.error(err);
+      return { success: true };
+    } catch (error) {
+      return {
+        success: false,
+        error: parseNetworkError(error),
+      };
     }
   }
 
@@ -89,10 +92,9 @@ export default class API {
       const res = await this.client.post<User>("/verify", { code });
       return { success: true, ...res.data };
     } catch (error) {
-      console.error(error);
       return {
         success: false,
-        error: "internal server error",
+        error: parseNetworkError(error),
       };
     }
   }
@@ -101,8 +103,11 @@ export default class API {
     try {
       await this.client.post(`/verify/resend/${id}`);
       return { success: true };
-    } catch {
-      return { success: false, error: "internal server error" };
+    } catch (error) {
+      return {
+        success: false,
+        error: parseNetworkError(error),
+      };
     }
   }
 
@@ -116,8 +121,11 @@ export default class API {
         newPassword,
       });
       return { success: true };
-    } catch {
-      return { success: false, error: "internal server error" };
+    } catch (error) {
+      return {
+        success: false,
+        error: parseNetworkError(error),
+      };
     }
   }
 
@@ -125,8 +133,11 @@ export default class API {
     try {
       await this.client.post(`/reset-password`, { email });
       return { success: true };
-    } catch {
-      return { success: false, error: "internal server error" };
+    } catch (error) {
+      return {
+        success: false,
+        error: parseNetworkError(error),
+      };
     }
   }
 
@@ -139,8 +150,11 @@ export default class API {
         password: newPassword,
       });
       return { success: true };
-    } catch {
-      return { success: false, error: "internal server error" };
+    } catch (error) {
+      return {
+        success: false,
+        error: parseNetworkError(error),
+      };
     }
   }
 

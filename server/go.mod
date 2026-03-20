@@ -2,7 +2,10 @@ module github.com/mlinder10/wcj
 
 go 1.25.3
 
-require modernc.org/sqlite v1.47.0
+require (
+	google.golang.org/genai v1.51.0
+	modernc.org/sqlite v1.47.0
+)
 
 require (
 	cloud.google.com/go v0.116.0 // indirect
@@ -16,8 +19,8 @@ require (
 	go.opencensus.io v0.24.0 // indirect
 	golang.org/x/net v0.51.0 // indirect
 	golang.org/x/text v0.35.0 // indirect
-	google.golang.org/genai v1.51.0 // indirect
 	google.golang.org/genproto/googleapis/rpc v0.0.0-20240903143218-8af14fe29dc1 // indirect
+	google.golang.org/grpc v1.66.2 // indirect
 	google.golang.org/protobuf v1.34.2 // indirect
 )
 
@@ -30,7 +33,6 @@ require (
 	github.com/mattn/go-isatty v0.0.20 // indirect
 	github.com/ncruces/go-strftime v1.0.0 // indirect
 	github.com/remyoudompheng/bigfft v0.0.0-20230129092748-24d4a6f8daec // indirect
-	github.com/rs/cors v1.11.1
 	golang.org/x/crypto v0.49.0
 	golang.org/x/sys v0.42.0 // indirect
 	modernc.org/libc v1.70.0 // indirect

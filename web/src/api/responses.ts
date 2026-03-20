@@ -8,7 +8,7 @@ export type Response<T> =
     } & T)
   | {
       success: false;
-      error: APIError;
+      error: string;
     };
 
 export type PostsResponse = {

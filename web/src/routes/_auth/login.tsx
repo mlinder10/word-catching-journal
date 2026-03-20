@@ -27,7 +27,7 @@ function LoginPage() {
   const { isPending, error, handleLogin } = useLogin();
 
   return (
-    <main className="place-items-center grid w-full h-screen">
+    <main className="flex-1 place-items-center grid w-full">
       <Card className="min-w-md">
         <CardHeader>
           <CardTitle>Login</CardTitle>

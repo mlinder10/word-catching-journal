@@ -39,11 +39,11 @@ func loginUser(ctx context.Context, email, password string) (types.UserResponse,
 	}
 
 	if !row.EmailVerified {
-		return types.UserResponse{}, types.Errors.InvalidEmailOrPassword(err)
+		return types.UserResponse{}, types.Errors.InvalidEmailOrPassword(errors.New("email not verified"))
 	}
 
 	if !verifyPassword(password, row.Password) {
-		return types.UserResponse{}, types.Errors.InvalidEmailOrPassword(err)
+		return types.UserResponse{}, types.Errors.InvalidEmailOrPassword(errors.New("invalid email or password"))
 	}
 
 	user := types.UserResponse{
